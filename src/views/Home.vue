@@ -3,6 +3,10 @@
     <h1>On Broadway...</h1>
 
     <div class="shows">
+      <div v-for="show in shows" :key="show.id" class="show">
+        <img :src="show.poster" :alt="show.title">
+        <h2>{{ show.title }}</h2>
+      </div>
       <div class="show">
         <img src="https://d2npu017ljjude.cloudfront.net/images/poster-178275/w230/222222/86046-3.jpeg" alt="Phantom of the Opera">
         <h2>Phantom of the Opera</h2>

@@ -32,7 +32,28 @@
 </template>
 
 <script>
+import firebase from "firebase";
+
 export default {
-  name: "home"
+  name: "home",
+  data() {
+    return {
+      shows: []
+    }
+  },
+  created() {
+    this.fetchShows();
+  },
+  methods: {
+    async fetchShows() {
+      const query = await firebase.firestore().collection("shows").get();
+      this.shows = query.docs.map(snapshot => {
+        return {
+          id: snapshot.id,
+          ...snapshot.data()
+        }
+      });
+    }
+  }
 };
 </script>

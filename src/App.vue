@@ -33,5 +33,9 @@
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   max-width: 800px;
   margin: 0 auto;
+
+  img {
+    max-width: 100%;
+  }
 }
 </style>

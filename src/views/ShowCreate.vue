@@ -18,20 +18,21 @@
 </template>
 
 <script>
-import firebase from 'firebase';
+import firebase from "firebase";
 
 export default {
   data() {
     return {
-      title: '',
-      poster: ''
-    }
+      title: "",
+      poster: ""
+    };
   },
   methods: {
     async save() {
       const doc = await firebase
         .firestore()
-        .collection('shows').add({
+        .collection("shows")
+        .add({
           title: this.title,
           poster: this.poster
         });
@@ -39,6 +40,6 @@ export default {
       this.$router.push(`/shows/${doc.id}`);
     }
   }
-}
+};
 </script>
 

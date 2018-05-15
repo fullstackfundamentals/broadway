@@ -2,6 +2,10 @@
   <div class="home">
     <h1>On Broadway...</h1>
 
+    <p>
+      <router-link to="/shows/new">Create Show</router-link>
+    </p>
+
     <div class="shows">
       <div v-for="show in shows" :key="show.id" class="show">
         <img :src="show.poster" :alt="show.title">

@@ -10,6 +10,9 @@
           All Shows
         </router-link>
       </p>
+      <p>
+        <router-link :to="`/shows/${this.id}/edit`">Edit</router-link>
+      </p>
     </div>
   </div>
 </template>
@@ -27,12 +30,17 @@ export default {
     // get the show
     this.fetchShow();
   },
+  computed: {
+    id() {
+      return this.$route.params.id;
+    }
+  },
   methods: {
     async fetchShow() {
       const query = await firebase
         .firestore()
         .collection("shows")
-        .doc(this.$route.params.id)
+        .doc(this.id)
         .get();
 
       this.show = query.data();

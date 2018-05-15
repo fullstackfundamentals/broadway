@@ -5,7 +5,11 @@
     <div class="shows">
       <div v-for="show in shows" :key="show.id" class="show">
         <img :src="show.poster" :alt="show.title">
-        <h2>{{ show.title }}</h2>
+        <h2>
+          <router-link :to="`/shows/${show.id}`">
+            {{ show.title }}
+          </router-link>
+        </h2>
       </div>
     </div>
   </div>

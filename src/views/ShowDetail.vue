@@ -12,6 +12,7 @@
       </p>
       <p>
         <router-link :to="`/shows/${this.id}/edit`">Edit</router-link>
+        <button @click="deleteShow">Delete</button>
       </p>
     </div>
   </div>
@@ -36,6 +37,17 @@ export default {
     }
   },
   methods: {
+    async deleteShow() {
+      if (confirm("Are you sure you want to delete this show?")) {
+        await firebase.firestore()
+          .collection("shows")
+          .doc(this.id)
+          .delete();
+
+        this.$router.push('/');
+      }
+    },
+
     async fetchShow() {
       const query = await firebase
         .firestore()

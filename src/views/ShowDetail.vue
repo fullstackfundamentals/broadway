@@ -19,13 +19,13 @@
 </template>
 
 <script>
-import firebase from 'firebase';
+import firebase from "firebase";
 
 export default {
   data() {
     return {
       show: {}
-    }
+    };
   },
   created() {
     // get the show
@@ -39,12 +39,13 @@ export default {
   methods: {
     async deleteShow() {
       if (confirm("Are you sure you want to delete this show?")) {
-        await firebase.firestore()
+        await firebase
+          .firestore()
           .collection("shows")
           .doc(this.id)
           .delete();
 
-        this.$router.push('/');
+        this.$router.push("/");
       }
     },
 
@@ -58,5 +59,5 @@ export default {
       this.show = query.data();
     }
   }
-}
+};
 </script>

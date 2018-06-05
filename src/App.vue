@@ -35,7 +35,7 @@
   margin: 0 auto;
 
   img {
-    max-width: 100%;
+    max-width: 230px;
   }
 }
 </style>

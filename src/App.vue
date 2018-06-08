@@ -1,12 +1,20 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <!-- <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> -->
-    </div>
-    <router-view/>
+    <router-view v-if="isBooted" />
+    <div v-else>Loading...</div>
   </div>
 </template>
+
+<script>
+import { mapState } from "vuex";
+
+export default {
+  computed: {
+    ...mapState(['isBooted'])
+  }
+}
+</script>
+
 
 <style lang="scss">
 #app {

@@ -5,10 +5,11 @@ import ShowDetail from "./views/ShowDetail.vue";
 import ShowCreate from "./views/ShowCreate.vue";
 import ShowEdit from "./views/ShowEdit.vue";
 import Login from "./views/Login.vue";
+import store from "./store";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: "/",
@@ -18,7 +19,10 @@ export default new Router({
     {
       path: "/shows/new",
       name: "show.create",
-      component: ShowCreate
+      component: ShowCreate,
+      meta: {
+        isProtected: true
+      }
     },
     {
       path: "/shows/:id",
@@ -28,7 +32,10 @@ export default new Router({
     {
       path: "/shows/:id/edit",
       name: "show.edit",
-      component: ShowEdit
+      component: ShowEdit,
+      meta: {
+        isProtected: true
+      }
     },
     {
       path: "/login",
@@ -37,3 +44,15 @@ export default new Router({
     }
   ]
 });
+
+router.beforeEach(async (to, from, next) => {
+  if (!store.state.isBooted) await store.dispatch('boot');
+
+  if (to.meta.isProtected && !store.getters.isLoggedIn) {
+    return next('/login');
+  }
+
+  next();
+})
+
+export default router;

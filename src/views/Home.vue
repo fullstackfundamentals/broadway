@@ -2,7 +2,7 @@
   <div class="home">
     <h1>On Broadway...</h1>
 
-    <p>
+    <p v-if="isLoggedIn">
       <router-link to="/shows/new">Create Show</router-link>
     </p>
 
@@ -19,6 +19,7 @@
 
 <script>
 import firebase from "firebase/app";
+import { mapGetters } from "vuex";
 
 export default {
   name: "home",
@@ -26,6 +27,9 @@ export default {
     return {
       shows: []
     };
+  },
+  computed: {
+    ...mapGetters(['isLoggedIn'])
   },
   created() {
     this.fetchShows();

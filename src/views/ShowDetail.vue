@@ -10,7 +10,7 @@
           All Shows
         </router-link>
       </p>
-      <p>
+      <p v-if="isLoggedIn">
         <router-link :to="`/shows/${this.id}/edit`">Edit</router-link>
         <button @click="deleteShow">Delete</button>
       </p>
@@ -20,6 +20,7 @@
 
 <script>
 import firebase from "firebase/app";
+import { mapGetters } from "vuex";
 
 export default {
   data() {
@@ -34,7 +35,9 @@ export default {
   computed: {
     id() {
       return this.$route.params.id;
-    }
+    },
+
+    ...mapGetters(['isLoggedIn'])
   },
   methods: {
     async deleteShow() {

@@ -7,12 +7,7 @@ import "firebase/firestore";
 
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyCNsUqMS5rYpGdZEdSzddUYzN3gnmQ_0_k",
-  authDomain: "broadway-9207f.firebaseapp.com",
-  databaseURL: "https://broadway-9207f.firebaseio.com",
-  projectId: "broadway-9207f",
-  storageBucket: "broadway-9207f.appspot.com",
-  messagingSenderId: "805923264014"
+  // Your config here
 };
 
 firebase.initializeApp(config);
